@@ -4,18 +4,42 @@ background-color: #333333;
 margin: 0;
 }
 header {
+text-align: center;
 background-color: #404040;
 color: rgb(136, 136, 136);
 padding: 15px;
+
 }
 nav ul {
+text-align: center;
 list-style: none;
 }
 nav li {
+text-align: center;
 display: inline;
 margin-right: 15px;
 }
 footer {
+text-align: center;
 margin-top: 20px;
 font-size: 14px;
+}
+
+
+.parent {
+text-align: center;
+display: grid;
+grid-template-columns: repeat(10, 1fr);
+grid-template-rows: repeat(8, 1fr);
+grid-column-gap: 0px;
+grid-row-gap: 0px;
+}
+
+.div1 { grid-area: 1 / 2 / 9 / 10; }
+
+nav a {
+    border: 2px solid #888888;
+    padding: 6px 12px;
+    text-decoration: none;
+    color: #888888;
 }
