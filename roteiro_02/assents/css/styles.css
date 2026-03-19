@@ -1,4 +1,4 @@
-body {
+body {  
 font-family: Arial, sans-serif;
 background-color: #333333;
 margin: 0;
@@ -10,10 +10,15 @@ color: rgb(136, 136, 136);
 padding: 15px;
 
 }
-nav ul {
-text-align: center;
+nav ul {   
+display: flex;
+justify-content: center;
+gap: 20px;
 list-style: none;
+padding: 0;
 }
+
+
 nav li {
 text-align: center;
 display: inline;
@@ -46,4 +51,23 @@ nav a {
 nav a:hover {
     background-color: white;
     color: black;
+}
+
+.cards {
+display: flex;
+gap: 20px;
+justify-content: center;
+flex-wrap: wrap;
+}
+.card {
+background-color: rgb(103, 103, 103);
+padding: 20px;
+width: 250px;
+border-radius: 8px;
+text-align: center;
+}
+
+img {
+    width: 200px;
+    height: 200px;
 }
