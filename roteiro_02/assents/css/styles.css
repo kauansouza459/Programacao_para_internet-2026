@@ -5,8 +5,8 @@ margin: 0;
 }
 header {
 text-align: center;
-background-color: #404040;
-color: rgb(136, 136, 136);
+background-color:rgb(103, 103, 103);
+color: rgb(0, 0, 0);
 padding: 15px;
 
 }
@@ -24,6 +24,7 @@ text-align: center;
 display: inline;
 margin-right: 15px;
 }
+
 footer {
 text-align: center;
 margin-top: 20px;
