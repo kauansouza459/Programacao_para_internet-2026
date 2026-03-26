@@ -54,21 +54,43 @@ nav a:hover {
     color: black;
 }
 
+
+img {
+    width: 200px;
+    height: 200px;
+}
+
+.card:hover {
+transform: translateY(-2px);
+box-shadow: 0px 4px 12px rgba(0,0,0,0.2);
+transition: all 0.3s ease;
+}
+
 .cards {
+background-color: rgb(139, 139, 139);
 display: flex;
 gap: 20px;
 justify-content: center;
 flex-wrap: wrap;
+text-align: center;
 }
 .card {
 background-color: rgb(103, 103, 103);
-padding: 20px;
+padding: 10px;
 width: 250px;
 border-radius: 8px;
 text-align: center;
 }
 
-img {
-    width: 200px;
-    height: 200px;
+.card a{
+    border: 2px solid #888888;
+    padding: 6px 12px;
+    text-decoration: none;
+    color: #888888;
+}
+
+
+card a:hover {
+    background-color: white;
+    color: black;
 }
