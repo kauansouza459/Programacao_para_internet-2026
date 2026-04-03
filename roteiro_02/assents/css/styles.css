@@ -26,17 +26,18 @@ nav li {
     text-align: center;
     display: inline;
     margin-right: 15px;
+    
 }
 
 nav a {
-    border: 2px solid #888888;
+    border: 2px solid #320081;
     padding: 6px 12px;
     text-decoration: none;
-    color: #888888;
+    color: #4e20f7;
 }
 
 nav a:hover {
-    background-color: white;
+    background-color: rgb(119, 0, 255);
     color: black;
 }
 
@@ -97,10 +98,10 @@ footer {
 /* BOTÃO DO CARD */
 .card a {
     display: inline-block;
-    border: 2px solid #888888;
+    border: 2px solid #6e00d4;
     padding: 6px 12px;
     text-decoration: none;
-    color: #888888;
+    color: #46175c;
     margin-top: 10px;
 }
 
@@ -120,14 +121,19 @@ footer {
 
 
 .cards:hover{
-     transform: translateY(-10px);
+     transform: translateY(120px),translateX(120px);
     box-shadow: 0px 4px 12px rgba(0,0,0,0.2);
     transition: all 0.9s ease;
 }
 
-.card.actve{
-    transform: translateY(3px);
-    box-shadow: 0px 1px 3px rgba(255, 0, 0, 0.2);
-    width: 220px;
-    background-color: rgba(255, 0, 0, 0.2);
+p {
+    color: rgb(255, 255, 255);
+}
+
+h3 {
+    color: rgb(255, 255, 255);
+}   
+
+h1 {
+    color: rgb(255, 255, 255);
 }
