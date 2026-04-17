@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="assents/css/styles3.css">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1 id="titulo">Olá Mundo!</h1>
+
+    <button id="btnTexto">Clique Aqui</button>
+
+    <ul id="minhaLista"></ul>
+
+    <button id="add">Adicionar Item</button>
+
+    <h2>quantos cliques em 10 segundos</h2>
+    <h2 id="contador">0</h2>
+    <button id="btnSoma">Contar +1</button>
+
+    <button id="tocar">Tocar som</button>
+
+    <img id="lampada" src="assents/img/lampada_desligada.png" style="width:100px">
+    <button id="btnInterruptor">Ligar/Desligar</button>
+
+    <script>
+        // ===================== ÁUDIO =====================
+        const botaoAudio = document.getElementById("tocar");
+
+        const audio = new Audio(
+            "assents/img/Rick Astley - Never Gonna Give You Up (Official Video) (4K Remaster) [dQw4w9WgXcQ].mp3"
+        );
+
+        botaoAudio.addEventListener("click", () => {
+            audio.currentTime = 0;
+            audio.play();
+        });
+
+        // ===================== TEXTO =====================
+        const titulo = document.getElementById("titulo");
+
+        document.getElementById("btnTexto").addEventListener("click", () => {
+            titulo.innerText = "JavaScript funcionando!";
+            titulo.style.color = "black";
+        });
+
+        // ===================== LISTA =====================
+        const lista = document.getElementById("minhaLista");
+        const botaoAdd = document.getElementById("add");
+
+        botaoAdd.addEventListener("click", () => {
+            const li = document.createElement("li");
+            const botao = document.createElement("button");
+
+            botao.innerText = "botão criado dinamicamente";
+
+            botao.addEventListener("click", () => {
+                alert("Você clicou no botão criado dinamicamente!");
+            });
+
+            li.appendChild(botao);
+            lista.appendChild(li);
+        });
+
+        // ===================== CONTADOR =====================
+        let valor = 0;
+        const display = document.getElementById("contador");
+
+        document.getElementById("btnSoma").addEventListener("click", () => {
+            valor++;
+            display.innerText = valor;
+        });
+
+        // ===================== LÂMPADA =====================
+        const img = document.getElementById("lampada");
+        let acesa = false;
+
+        document.getElementById("btnInterruptor").addEventListener("click", () => {
+            acesa = !acesa;
+            img.src = acesa 
+                ? "assents/img/lampada_ligada.png" 
+                : "assents/img/lampada_desligada.png";
+        });
+
+    </script>
+
+</body>
+</html>
