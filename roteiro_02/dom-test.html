@@ -1,131 +1,163 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="assents/css/styles3.css">
-    <title>Document</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mini Apps JS</title>
+<link rel="stylesheet" href="assents/css/styles3.css">
 </head>
 
 <body>
+
+<!-- TEXTO -->
+<div class="card">
     <h1 id="titulo">Olá Mundo!</h1>
-
     <button id="btnTexto">Clique Aqui</button>
+</div>
 
+<!-- LISTA -->
+<div class="card">
+    <h2>Lista</h2>
     <ul id="minhaLista"></ul>
-
     <button id="add">Adicionar Item</button>
+</div>
 
-    <h2>quantos cliques em 10 segundos</h2>
+<!-- CONTADOR -->
+<div class="card">
+    <h2>Contador</h2>
     <h2 id="contador">0</h2>
     <button id="btnSoma">Contar +1</button>
+</div>
 
+<!-- ÁUDIO -->
+<div class="card">
+    <h2>Áudio</h2>
     <button id="tocar">Tocar som</button>
+</div>
 
-    <img id="lampada" src="assents/img/lampada_desligada.png" style="width:100px">
+<!-- LÂMPADA -->
+<div class="card">
+    <h2>Lâmpada</h2>
+    <img id="lampada" src="assents/img/lampada_desligada.png" width="100">
+    <br>
     <button id="btnInterruptor">Ligar/Desligar</button>
+</div>
 
-    <input type="number" id="palpite" placeholder="0 a 10">
+<!-- JOGO DO CHUTE -->
+<div class="card">
+    <h2>Adivinhe o número</h2>
+    <input type="number" id="palpite">
     <button id="btnChutar">Chutar!</button>
     <p id="feedback"></p>
+</div>
 
+<!-- BOTÃO FUGITIVO -->
+<div class="card">
+    <h2>Botão fugitivo 😈</h2>
+    <div class="area-fugitivo" id="area">
+        <button id="fugitivo" style="position:absolute;">
+            Pegue-me!
+        </button>
+    </div>
     <p>Erros: <span id="contadorErros">0</span></p>
-    <button id="fugitivo" style="position: absolute; left: 50%; top: 50%;">
-        pegume se for capaz
-    </button>
+</div>
 
-    <script>
-        // ===================== ÁUDIO =====================
-        const botaoAudio = document.getElementById("tocar");
+<!-- JOKENPO -->
+<div class="card">
+    <h2>Jokenpo</h2>
+    <button onclick="jogar('pedra')">Pedra</button>
+    <button onclick="jogar('papel')">Papel</button>
+    <button onclick="jogar('tesoura')">Tesoura</button>
+    <p id="resultado"></p>
 
-        const audio = new Audio(
-            "assents/img/Rick Astley - Never Gonna Give You Up (Official Video) (4K Remaster) [dQw4w9WgXcQ].mp3"
-        );
+    <p>Acertos: <span id="acertos">0</span></p>
+    <p>Erros: <span id="erros">0</span></p>
+    <p>Jogadas: <span id="jogadas">0</span></p>
+</div>
 
-        botaoAudio.addEventListener("click", () => {
-            audio.currentTime = 0;
-            audio.play();
-        });
+<script>
+// TEXTO
+document.getElementById("btnTexto").onclick = () => {
+    titulo.innerText = "JavaScript funcionando!";
+};
 
-        // ===================== TEXTO =====================
-        const titulo = document.getElementById("titulo");
+// LISTA
+document.getElementById("add").onclick = () => {
+    const li = document.createElement("li");
+    li.innerText = "Novo item";
+    document.getElementById("minhaLista").appendChild(li);
+};
 
-        document.getElementById("btnTexto").addEventListener("click", () => {
-            titulo.innerText = "JavaScript funcionando!";
-            titulo.style.color = "black";
-        });
+// CONTADOR
+let valor = 0;
+btnSoma.onclick = () => {
+    valor++;
+    contador.innerText = valor;
+};
 
-        // ===================== LISTA =====================
-        const lista = document.getElementById("minhaLista");
-        const botaoAdd = document.getElementById("add");
+// ÁUDIO
+const audio = new Audio("assents/img/audio.mp3");
+tocar.onclick = () => {
+    audio.currentTime = 0;
+    audio.play();
+};
 
-        botaoAdd.addEventListener("click", () => {
-            const li = document.createElement("li");
-            const botao = document.createElement("button");
+// LÂMPADA
+let acesa = false;
+btnInterruptor.onclick = () => {
+    acesa = !acesa;
+    lampada.src = acesa
+        ? "assents/img/lampada_ligada.png"
+        : "assents/img/lampada_desligada.png";
+};
 
-            botao.innerText = "botão criado dinamicamente";
+// CHUTE
+const segredo = Math.floor(Math.random() * 11);
+btnChutar.onclick = () => {
+    const chute = Number(palpite.value);
+    feedback.innerText =
+        chute === segredo ? "Acertou!" :
+        chute > segredo ? "Muito alto!" : "Muito baixo!";
+};
 
-            botao.addEventListener("click", () => {
-                alert("Você clicou no botão criado dinamicamente!");
-            });
+// FUGITIVO (AGORA DENTRO DA DIV)
+let erros = 0;
+fugitivo.onmouseover = () => {
+    erros++;
+    contadorErros.innerText = erros;
 
-            li.appendChild(botao);
-            lista.appendChild(li);
-        });
+    const area = document.getElementById("area");
+    const x = Math.random() * (area.clientWidth - 80);
+    const y = Math.random() * (area.clientHeight - 40);
 
-        // ===================== CONTADOR =====================
-        let valor = 0;
-        const display = document.getElementById("contador");
+    fugitivo.style.left = x + "px";
+    fugitivo.style.top = y + "px";
+};
 
-        document.getElementById("btnSoma").addEventListener("click", () => {
-            valor++;
-            display.innerText = valor;
-        });
+// JOKENPO
+const opcoes = ['pedra','papel','tesoura'];
 
-        // ===================== LÂMPADA =====================
-        const img = document.getElementById("lampada");
-        let acesa = false;
+function jogar(player) {
+    const pc = opcoes[Math.floor(Math.random()*3)];
 
-        document.getElementById("btnInterruptor").addEventListener("click", () => {
-            acesa = !acesa;
-            img.src = acesa
-                ? "assents/img/lampada_ligada.png"
-                : "assents/img/lampada_desligada.png";
-        });
+    jogadas.innerText++;
 
-        // ===================== JOGO DO CHUTE =====================
-        const campo = document.getElementById("palpite");
-        const texto = document.getElementById("feedback");
-        const segredo = Math.floor(Math.random() * 11);
+    if(player === pc){
+        resultado.innerText = "Empate!";
+    }
+    else if(
+        (player==='pedra' && pc==='tesoura') ||
+        (player==='papel' && pc==='pedra') ||
+        (player==='tesoura' && pc==='papel')
+    ){
+        resultado.innerText = "Ganhou!";
+        acertos.innerText++;
+    } else {
+        resultado.innerText = "Perdeu!";
+        erros.innerText++;
+    }
+}
+</script>
 
-        document.getElementById("btnChutar").addEventListener("click", () => {
-            const chute = Number(campo.value);
-
-            if (chute === segredo) {
-                texto.innerText = "Parabéns! Você acertou!";
-                texto.style.color = "green";
-            } else {
-                texto.innerText = chute > segredo ? "Muito alto!" : "Muito baixo!";
-                texto.style.color = "red";
-            }
-        });
-
-        // ===================== BOTÃO FUGITIVO =====================
-        const btn = document.getElementById("fugitivo");
-        const placar = document.getElementById("contadorErros");
-        let erros = 0;
-
-        btn.addEventListener("mouseover", () => {
-            erros++;
-            placar.innerText = erros;
-
-            // Mudar posição aleatoriamente
-            const x = Math.random() * (window.innerWidth - 100);
-            const y = Math.random() * (window.innerHeight - 50);
-
-            btn.style.left = `${x}px`;
-            btn.style.top = `${y}px`;
-        });
-    </script>
 </body>
 </html>

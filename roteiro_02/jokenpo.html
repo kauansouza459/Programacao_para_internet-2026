@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jokenpo com javascript</title>
+    <link rel="stylesheet" href= "assents/css/sytles4.css">
+</head>
+ <body>
+  <div id="jogo">
+    <h1>Jokenpo</h1>
+    <button onclick="jogar('pedra')">Pedra</button>
+    <button onclick="jogar('papel')">Papel</button>
+    <button onclick="jogar('tesoura')">Tesoura</button>
+    <p id="resultado"></p>
+
+    <script>
+        const opcoes = ['pedra', 'papel', 'tesoura'];
+
+        function jogar(player) {
+            const pc = opcoes[Math.floor(Math.random() * 3)];
+            const res = document.getElementById("resultado");
+
+            if (player === pc) {
+                res.innerText = `Empate! Ambos escolheram ${pc}`;
+            } else if (
+                (player === 'pedra' && pc === 'tesoura') ||
+                (player === 'papel' && pc === 'pedra') ||
+                (player === 'tesoura' && pc === 'papel')
+            ) { 
+                res.innerText = `Você Ganhou! ${player} vence ${pc}`;
+                document.getElementById("acertos").innerText++;
+            } else {
+                res.innerText = `Você Perdeu! ${pc} vence ${player}`;
+                document.getElementById("erros").innerText++;
+            }
+            document.getElementById("jogadas").innerText++;
+        }
+    </script>
+       <p>acertos: <span id="acertos">0</span></p>
+       <p>erros: <span id="erros">0</span></p>
+       <p>jogadas: <span id="jogadas">0</span></p>
+</div>
+ </body>
+</html>
