@@ -24,3 +24,19 @@ div {
     margin: 10px;
     background-color: white;
 }
+
+.box {
+    width: 300px;
+    height: auto; /* 'auto' é melhor para conselhos longos não transbordarem */
+    min-height: 200px;
+    border: 2px solid #00FF41; /* Um verde Matrix para combinar */
+    display: inline-block;
+    margin: 10px;
+    background-color: #000; /* Fundo preto */
+    color: #00FF41; /* Texto verde */
+    padding: 20px;
+    border-radius: 8px;
+    font-family: 'Courier New', monospace;
+    vertical-align: top;
+    box-shadow: 0 0 10px #00FF41; /* Efeito de brilho neon */
+}
